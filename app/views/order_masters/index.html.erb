@@ -1,0 +1,45 @@
+<fieldset><legend>Listing order</legend>
+  
+   <div class="pull-right">  
+      <%= form_tag(order_masters_path, :method => "get",class:"form-search", id: "search-form") do  %>
+      <div class="input-append">  
+         <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search order" %>
+         <button type="submit" class="btn  btn-success ">Search</button>
+     </div>
+     <% end %>
+  </div>
+<table id="table" class="table table-striped table table-hover">
+  <thead>
+    <tr>
+      <th style="text-align: center">Mechanic</th>
+      <th style="text-align: center">Licence Plate</th>
+      <th style="text-align: center">Type of work</th>
+      <th style="text-align: center">Date</th>
+      <th style="text-align: center">Client</th>
+      <th style="text-align: center">Description problem</th>
+      <th style="text-align: center">Work research</th>
+      <th style="text-align: center">State</th>
+      <th style="text-align: center"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_masters.each do |order_master| %>
+      <tr>
+        <td style="text-align: center"><%= order_master.mechanic.name%></td>
+        <td style="text-align: center"><%= order_master.vehicle.licencePlate %></td>
+        <td style="text-align: center"><%= order_master.type_of_work.typeWork %></td>
+        <td style="text-align: center"><%= order_master.date %></td>
+        <td style="text-align: center"><%= order_master.client.name %></td>
+        <td style="text-align: center"><%= order_master.description_problem %></td>
+        <td style="text-align: center"><%= order_master.description_work_research %></td>
+        <td style="text-align: center"><%= order_master.state.status%></td>
+        <td style="text-align: center"><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_order_master_path(order_master) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => order_master.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</fieldset>
+<br>
+

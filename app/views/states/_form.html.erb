@@ -1,0 +1,30 @@
+<%= form_for @state, html: { class: "form-horizontal"} do |f| %>
+  <div class="span10 offset1">  
+  
+
+  <div class="control-group<%= @state.errors[:status].any? ? " error" : "" %>">
+    <%= f.label :status ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :status, :class => 'text_field',:onkeyup => "this.value=this.value.toUpperCase()" %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @state.errors[:status].any? ? @state.errors[:status].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+  <div class="control-group<%= @state.errors[:description].any? ? " error" : "" %>">
+    <%= f.label :description ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_area :description, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @state.errors[:description].any? ? @state.errors[:description].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+  <div class="span8 offset3">            
+         <div class="control-group">   
+        <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+        <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,8 @@
+<% @brands.each do |brand| %>
+<tr>
+	<td style="text-align: center"><%= brand.brand %></td>
+	<td style="text-align: center"><%= brand.description %></td>
+	<td><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_brand_path(brand),remote:true %>
+	 <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'), brand_delete_path(brand), remote: true%></td>
+	</tr>
+	<% end %>

@@ -1,0 +1,60 @@
+<%= form_for @replacement, html: { class: "form-horizontal"} do |f| %>
+  <div class="span10 offset1">  
+  
+
+  <div class="control-group<%= @replacement.errors[:name].any? ? " error" : "" %>">
+    <%= f.label :name ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :name, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @replacement.errors[:name].any? ? @replacement.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+  <div class="control-group<%= @replacement.errors[:brand].any? ? " error" : "" %>">
+    <%= f.label :brand ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :brand, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @replacement.errors[:brand].any? ? @replacement.errors[:brand].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+    <div class="control-group<%= @replacement.errors[:purchasePrice].any? ? " error" : "" %>">
+    <%= f.label :purchasePrice ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :purchasePrice, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @replacement.errors[:purchasePrice].any? ? @replacement.errors[:purchasePrice].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+    <div class="control-group<%= @replacement.errors[:salePrice].any? ? " error" : "" %>">
+    <%= f.label :salePrice ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :salePrice, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @replacement.errors[:salePrice].any? ? @replacement.errors[:salePrice].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+    <div class="control-group<%= @replacement.errors[:description].any? ? " error" : "" %>">
+    <%= f.label :description ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_area :description, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @replacement.errors[:description].any? ? @replacement.errors[:description].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+<div class="span8 offset3">    
+  <div class="control-group">   
+      <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+      <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+  </div>
+</div>
+<% end %>

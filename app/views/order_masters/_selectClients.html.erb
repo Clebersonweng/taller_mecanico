@@ -1,0 +1,8 @@
+<div class="control-group<%= @order_master.errors[:client_id].any? ? " error" : "" %>">
+	<%= f.label :client_id, :class => 'control-label' %>
+	<div class="controls">
+		<%= select("order_master", "client", Client.all.collect {|p| [ p.name+" "+p.lastname, p.id ] }, {include_blank: 'select the option'})%>
+		<span class="help-inline">
+			<%= @order_master.errors[:client_id].any? ? @order_master.errors[:client_id].to_s[/\w([^"]*)/] : "" %></span>
+	</div>
+</div>

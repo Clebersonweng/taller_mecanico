@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mechanic:</strong>
+  <%= @order_master.mechanic_id %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @order_master.vehicle %>
+</p>
+
+<p>
+  <strong>Type of work:</strong>
+  <%= @order_master.type_of_work %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @order_master.date %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @order_master.client_id %>
+</p>
+
+<p>
+  <strong>Description problem:</strong>
+  <%= @order_master.description_problem %>
+</p>
+
+<p>
+  <strong>Description work research:</strong>
+  <%= @order_master.description_work_research %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @order_master.state_id %>
+</p>
+
+<%= link_to 'Edit', edit_order_master_path(@order_master) %> |
+<%= link_to 'Back', order_masters_path %>

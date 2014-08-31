@@ -1,0 +1,61 @@
+<%= form_for @vehicle, html: { class: "form-horizontal"} do |f|  %>
+  <div class="span10 offset1">  
+  
+   <div class="control-group<%= @vehicle.errors[:client_id].any? ? " error" : "" %>">
+    <%= f.label :client_id ,:class =>'control-label'%>
+    <div class="controls">
+    <%= select("vehicle", "client_id", @clients,{include_blank: '----CHOOSE----'},:class => 'text_field')%>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @vehicle.errors[:client_id].any? ? @vehicle.errors[:client_id].to_s[/\w([^"]*)/] : "" %>
+      </span>
+      </div>
+    </div>
+
+    <div class="control-group<%= @vehicle.errors[:brand_id].any? ? " error" : "" %>">
+    <%= f.label :brand_id ,:class =>'control-label'%>
+    <div class="controls">
+    <%= select("vehicle", "brand_id", @brands,{include_blank: '----CHOOSE----'},:class => 'text_field')%>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @vehicle.errors[:brand_id].any? ? @vehicle.errors[:brand_id].to_s[/\w([^"]*)/] : "" %>
+      </span>
+      </div>
+    </div>
+
+    <div class="control-group<%= @vehicle.errors[:model_id].any? ? " error" : "" %>">
+    <%= f.label :model_id ,:class =>'control-label'%>
+    <div class="controls">
+    <%= select("vehicle", "model_id", @models,{include_blank: '----CHOOSE----'},:class => 'text_field')%>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @vehicle.errors[:model_id].any? ? @vehicle.errors[:model_id].to_s[/\w([^"]*)/] : "" %>
+      </span>
+      </div>
+    </div>
+
+
+    <div class="control-group<%= @vehicle.errors[:licencePlate].any? ? " error" : "" %>">
+      <%= f.label :licencePlate, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.text_field :licencePlate, :class => 'input-small' %>
+       <span class="help-inline">
+        <%= @vehicle.errors[:licencePlate].any? ? @vehicle.errors[:licencePlate].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+    </div>
+
+    <div class="control-group<%= @vehicle.errors[:year].any? ? " error" : "" %>">
+      <%= f.label :year, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.text_field :year, :class => 'input-small' %>
+       <span class="help-inline">
+        <%= @vehicle.errors[:year].any? ? @vehicle.errors[:year].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+    </div>
+<div class="span8 offset3"> 
+    <div class="control-group">   
+      <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+      <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+    </div>
+</div>
+    <% end %>

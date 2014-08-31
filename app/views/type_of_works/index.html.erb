@@ -1,0 +1,35 @@
+<fieldset><legend>Listing type work</legend>
+  
+   <div class="pull-right">  
+      <%= form_tag(type_of_works_path, :method => "get",class:"form-search", id: "search-form") do  %>
+      <div class="input-append">  
+         <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search Type work" %>
+         <button type="submit" class="btn  btn-success ">Search</button>
+     </div>
+     <% end %>
+  </div>
+<table class="table table-striped table table-hover">
+ <thead>
+    <tr>
+      <th style="text-align: center">Typework</th>
+      <th style="text-align: center">Price</th>
+      <th style="text-align: center">Description</th>
+      <th style="text-align: center"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @type_of_works.each do |type_of_work| %>
+      <tr>
+        <td style="text-align: center"><%= type_of_work.typeWork %></td>
+        <td style="text-align: center"><%= type_of_work.price %></td>
+        <td style="text-align: center"><%= type_of_work.description %></td>
+        <td style="text-align: center"><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_type_of_work_path(type_of_work) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => type_of_work.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

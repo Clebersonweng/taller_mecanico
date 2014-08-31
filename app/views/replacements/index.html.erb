@@ -1,0 +1,38 @@
+<fieldset><legend>Listing Replacements</legend>
+   <div class="pull-right">  
+      <%= form_tag(replacements_path, :method => "get",class:"form-search", id: "search-form") do  %>
+      <div class="input-append">  
+         <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search replacements" %>
+         <button type="submit" class="btn  btn-success ">Search</button>
+     </div>
+     <% end %>
+  </div>
+
+<table class="table table-striped table table-hover">
+ <thead>
+    <tr>
+      <th style="text-align: center">Name</th>
+      <th style="text-align: center">Brand</th>
+      <th style="text-align: center">Purchaseprice</th>
+      <th style="text-align: center">Saleprice</th>
+      <th style="text-align: center">Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @replacements.each do |replacement| %>
+      <tr>
+        <td style="text-align: center"><%= replacement.name %></td>
+        <td style="text-align: center"><%= replacement.brand %></td>
+        <td style="text-align: center"><%= replacement.purchasePrice %></td>
+        <td style="text-align: center"><%= replacement.salePrice %></td>
+        <td style="text-align: center"><%= replacement.description %></td>
+        <td><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_replacement_path(replacement) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => replacement.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

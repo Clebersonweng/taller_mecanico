@@ -1,0 +1,11 @@
+<h1>Example#edit</h1>
+<p>Find me in app/views/example/edit.html.erb</p>
+
+<%= form_for @order_master do |f| %>
+	<%= f.text_field :client_id %>
+	<br>
+	<%= f.fields_for :order_details do  |ff| %>
+		Quantity: <%= ff.text_field :quantity %> <br>
+		Replacement: <%= ff.text_field :replacement_id %> <hr>
+	<% end %>
+<% end %>

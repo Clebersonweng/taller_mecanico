@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TallerMecanico</title>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min" %>  
+  <%=javascript_include_tag "jquery", 'data-turbolinks-track' => true%>
+  <%=javascript_include_tag "jquery_ujs" %>
+  <%=javascript_include_tag "order.js" %>
+  <%=javascript_include_tag "bootstrap.js" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  #order_master_date_1i {
+    width: 70px
+  }
+
+  #order_master_date_2i {
+    width: 110px
+  }
+
+  #order_master_date_3i {
+    width: 70px
+  }
+  </style>
+</head>
+<body>
+  <header>
+   <%=render 'layouts/menu' %>
+ </header>
+<div class="container">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+       <%= render partial:"layouts/submenu" %>
+     </div>
+     <div class="span9">
+       <%= render partial: "layouts/flash_messages", flash: flash %> 
+       <%= yield %>
+       <script>
+       <%= yield :js %>
+       </script>
+     </div>
+   </div>
+ </div>
+</div>
+</body>
+</html>

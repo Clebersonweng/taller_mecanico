@@ -1,0 +1,57 @@
+<%= form_for @mechanic, html: { class: "form-horizontal"} do |f| %>
+  <div class="span10 offset1">  
+    <div class="control-group<%= @mechanic.errors[:document].any? ? " error" : "" %>">
+      <%= f.label :document, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.text_field :document, :class => 'text_field' %>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @mechanic.errors[:document].any? ? @mechanic.errors[:document].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+    </div>
+    <div class="control-group<%= @mechanic.errors[:name].any? ? " error" : "" %>">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @mechanic.errors[:name].any? ? @mechanic.errors[:name].to_s[/\w([^"]*)/] : "" %></span>
+        </div>
+    </div>
+      <div class="control-group<%= @mechanic.errors[:lastname].any? ? " error" : "" %>">
+        <%= f.label :lastname, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :lastname, :class => 'text_field' %>
+          <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+          <span class="help-inline">
+            <%= @mechanic.errors[:lastname].any? ? @mechanic.errors[:lastname].to_s[/\w([^"]*)/] : "" %></span>
+          </div>
+      </div>
+        <div class="control-group<%= @mechanic.errors[:address].any? ? " error" : "" %>">
+          <%= f.label :address, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :address, :class => 'text_field' %>
+            <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+            <span class="help-inline">
+              <%= @mechanic.errors[:address].any? ? @mechanic.errors[:address].to_s[/\w([^"]*)/] : "" %></span>
+            </div>
+        </div>
+          <div class="control-group<%= @mechanic.errors[:phone].any? ? " error" : "" %>">
+            <%= f.label :phone, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :phone, :class => 'text_field' %>
+              <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+              <span class="help-inline">
+                <%= @mechanic.errors[:phone].any? ? @mechanic.errors[:phone].to_s[/\w([^"]*)/] : "" %></span>
+              </div>
+          </div>
+          
+            <div class="span8 offset3">
+              <div class="control-group">   
+                <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+                <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+              </div>
+            </div>
+          
+  </div>
+<% end %>

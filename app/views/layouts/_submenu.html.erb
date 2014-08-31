@@ -1,0 +1,19 @@
+<ul class="nav nav-pills nav-stacked">
+    <li id="submenu_index">      
+    <a href="../<%=controller_name%>">List</a>        
+      </li>
+    <li id="submenu_new">
+       <a href="<%=controller_name%>/new">Create</a>      
+    </li>
+</ul>
+
+<!-- js para activar/desactivar submenu -->
+<script>
+    var actionName = "<%=controller.action_name %>";
+    if(actionName === "index"){
+        $("#submenu_index").addClass("active");       
+    }else if(actionName === "new" || actionName === "create"){
+        $("#submenu_new").addClass("active");
+
+    }
+</script>

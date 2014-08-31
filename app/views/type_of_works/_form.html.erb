@@ -1,0 +1,37 @@
+<%= form_for @type_of_work, html: { class: "form-horizontal"} do |f| %>
+  <div class="span10 offset1">  
+  
+  <div class="control-group<%= @type_of_work.errors[:typeWork].any? ? " error" : "" %>">
+    <%= f.label :typeWork ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :typeWork, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @type_of_work.errors[:typeWork].any? ? @type_of_work.errors[:typeWork].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+  <div class="control-group<%= @type_of_work.errors[:price].any? ? " error" : "" %>">
+    <%= f.label :price ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field:price, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @type_of_work.errors[:price].any? ? @type_of_work.errors[:price].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+
+  <div class="control-group<%= @type_of_work.errors[:description].any? ? " error" : "" %>">
+    <%= f.label :description ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_area :description, :class => 'text_field' %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @type_of_work.errors[:description].any? ? @type_of_work.errors[:description].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div><div class="span8 offset3"> 
+   <div class="control-group">   
+      <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+      <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+  </div></div>
+<% end %>

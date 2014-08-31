@@ -1,0 +1,39 @@
+<%= form_for @model, html: { class: "form-horizontal"} do |f| %>
+  <div class="span10 offset1">  
+  
+  <div class="control-group<%= @model.errors[:brand_id].any? ? " error" : "" %>">
+    <%= f.label :brand_id ,:class =>'control-label'%>
+    <div class="controls">
+    <%= select("model", "brand_id", @brands,{include_blank: '----CHOOSE----'},:class => 'text_field')%>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @model.errors[:brand_id].any? ? @model.errors[:brand_id].to_s[/\w([^"]*)/] : "" %>
+      </span>
+      </div>
+    </div>
+  
+
+  <div class="control-group<%= @model.errors[:model].any? ? " error" : "" %>">
+    <%= f.label :model ,:class =>'control-label'%>
+    <div class="controls">
+    <%= f.text_field :model, :class => 'text_field', :onkeyup=>"this.value=this.value.toUpperCase()" %>
+        <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+        <span class="help-inline">
+          <%= @model.errors[:model].any? ? @model.errors[:model].to_s[/\w([^"]*)/] : "" %></span>
+    </div>
+  </div>
+    
+  <div class="control-group">
+    <%= f.label :description ,:class =>'control-label'%>
+      <div class="controls">
+      <%= f.text_area :description, :class => 'text_field' %>
+      </div>
+  </div>
+    <div class="span8 offset3">            
+      <div class="control-group">   
+          <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+          <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button>
+      </div>
+    </div>
+</div>
+<% end %>

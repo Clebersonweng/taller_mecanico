@@ -1,0 +1,39 @@
+<fieldset><legend>Listing Clients</legend>
+ <div class="pull-right">  
+  <%= form_tag(clients_path, :method => "get",class:"form-search", id: "search-form") do  %>
+  <div class="input-append">  
+   <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search Clients" %>
+   <button type="submit" class="btn  btn-success ">Search</button>
+ </div>
+ <% end %>
+</div>
+
+<table class="table table-striped table table-hover">
+  <thead>
+    <tr>
+      <th style="text-align: center">Document</th>
+      <th style="text-align: center">Name</th>
+      <th style="text-align: center">Lastname</th>
+      <th style="text-align: center">Address</th>
+      <th style="text-align: center">Phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @clients.each do |client| %>
+    <tr>
+      <td style="text-align: center"><%= client.document %></td>
+      <td style="text-align: center"><%= client.name %></td>
+      <td style="text-align: center"><%= client.lastname %></td>
+      <td style="text-align: center"><%= client.address %></td>
+      <td style="text-align: center"><%= client.phone %></td>
+      <td><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_client_path(client) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => client.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</fieldset>
+<br>
+
+

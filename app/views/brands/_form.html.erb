@@ -1,0 +1,33 @@
+<%= form_for @brand, remote: true, html: { class: "form-horizontal" }  do |f| %>
+<div class="modal-body">
+  <ul class="errors"></ul>
+
+
+
+  <div class="control-group<%= @brand.errors[:brand].any? ? " error" : "" %>">
+      <%= f.label :brand, :class => 'control-label' %>
+      <div class="controls">
+      <%= f.text_field :brand, :class => 'text_field',onkeyup = "this.value=this.value.toUpperCase()" %>
+      <%#Obtener solo el mensaje con la expresion regular /\w([^]*)/%>
+      <span class="help-inline">
+        <%= @brand.errors[:brand].any? ? @brand.errors[:brand].to_s[/\w([^"]*)/] : "" %></span>
+      </div>
+    </div>
+
+  <div class="control-group">
+    <%= f.label :description,:class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description %>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="span6 offset2">
+    <div class="control-group">   
+      <button type="submit", class="btn btn-success", title="Guardar">Guardar</button>
+      <button type="reset", class="btn btn-danger", title="Cancelar">Cancelar</button> 
+    </div>
+  </div>
+</div>
+
+<% end %>

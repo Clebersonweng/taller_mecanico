@@ -1,0 +1,33 @@
+<fieldset><legend>Listing Models</legend>
+  <div class="pull-right">  
+      <%= form_tag(models_path, :method => "get",class:"form-search", id: "search-form") do  %>
+      <div class="input-append">  
+         <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search Models" %>
+         <button type="submit" class="btn  btn-success ">Search</button>
+     </div>
+     <% end %>
+  </div>
+<table class="table table-striped table table-hover">
+ <thead>
+    <tr>
+      <th style="text-align: center">Brand</th>
+      <th style="text-align: center">Model</th>
+      <th style="text-align: center">Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+      <tr>
+        <td style="text-align: center"><%= model.brand.brand %></td>
+        <td style="text-align: center"><%= model.model %></td>
+        <td style="text-align: center"><%= model.description %></td>
+        <td><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_model_path(model) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => model.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

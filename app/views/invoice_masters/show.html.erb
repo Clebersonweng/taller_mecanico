@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num invoice:</strong>
+  <%= @invoice_master.num_invoice %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @invoice_master.client_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @invoice_master.date %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @invoice_master.total %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_master_path(@invoice_master) %> |
+<%= link_to 'Back', invoice_masters_path %>

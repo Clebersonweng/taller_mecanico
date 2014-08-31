@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type of work:</strong>
+  <%= @invoice_detail.type_of_work_id %>
+</p>
+
+<p>
+  <strong>Invoice master:</strong>
+  <%= @invoice_detail.invoice_master_id %>
+</p>
+
+<p>
+  <strong>Order master:</strong>
+  <%= @invoice_detail.order_master_id %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_detail_path(@invoice_detail) %> |
+<%= link_to 'Back', invoice_details_path %>

@@ -1,0 +1,36 @@
+<fieldset><legend>Listing Invoice</legend>
+<div class="pull-right">  
+  <%= form_tag(clients_path, :method => "get",class:"form-search", id: "search-form") do  %>
+  <div class="input-append">  
+   <%= text_field_tag :search, params[:search],class:"span7 search-query", placeholder: "Search Clients" %>
+   <button type="submit" class="btn  btn-success ">Search</button>
+ </div>
+ <% end %>
+</div>
+
+<table class="table table-striped table table-hover">
+ <thead>
+    <tr>
+      <th style="text-align: center">Num invoice</th>
+      <th style="text-align: center">Client</th>
+      <th style="text-align: center">Date</th>
+      <th style="text-align: center">Total</th>
+      <th style="text-align: center"></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoice_masters.each do |invoice_master| %>
+      <tr>
+        <td style="text-align: center"><%= invoice_master.num_invoice %></td>
+        <td style="text-align: center"><%= invoice_master.client.name %></td>
+        <td style="text-align: center"><%= invoice_master.date %></td>
+        <td style="text-align: center" ><%= invoice_master.total %></td>
+        <td><%= link_to image_tag("/assets/pencil.ico",height: '20', width: '20'),  edit_invoice_master_path(invoice_master) %>
+         <%= link_to image_tag("/assets/delete.ico",height: '20', width: '20'),  { :action => :destroy, :id => invoice_master.id }, :method => :delete,:data => { :confirm => 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
